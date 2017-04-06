@@ -9,6 +9,7 @@ var clientFrom = () => {
 
 var clientTo = () => {
   return elasticsearch.Client({
+    //host: `http://${process.env.USER}:${process.env.PASS}@${process.env.HOST_TO}`,
     host: process.env.HOST_TO,
     requestTimeout: 240000
   });

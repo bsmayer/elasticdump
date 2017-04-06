@@ -40,16 +40,21 @@ var argv = yargs.options({
       describe: 'Type to Endpoint',
       type: 'string'
     },
-    p: {
-      alias: 'parent',
-      describe: 'parent of documents',
-      type: 'number'
-    },
     s: {
       alias: 'size',
       describe: 'size of documents',
       type: 'number',
       default: DEFAULT_SIZE
+    },
+    user: {
+      alias: 'user',
+      describe: 'User if necessary',
+      type: 'string'
+    },
+    pass: {
+      alias: 'password',
+      describe: 'Password if necessary',
+      type: 'string'
     }
   })
   .help()
@@ -62,6 +67,8 @@ process.env.TYPE_FROM = argv.tf;
 process.env.HOST_TO = argv.ht;
 process.env.INDEX_TO = argv.it;
 process.env.TYPE_TO = argv.tt;
+process.env.USER = argv.user;
+process.env.PASS = argv.pass;
 
 elasticsearch.dump(argv.s, (status, obj) => {
   if (!status)
